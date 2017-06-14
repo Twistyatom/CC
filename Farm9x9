@@ -1,0 +1,32 @@
+function farmBlock()
+    turtle.forward()
+    turtle.breakDown()
+    turtle.select(1)
+    if turtle.getItemCount(1) > 0 then
+      turtle.placeDown()
+    else print("Out of Seeds")
+end
+
+function farmRow()
+    for i = 1, 8 do
+        farmBlock()
+    end
+    turtle.turnRight()
+    turtle.forward()
+    turtle.turnRight()
+end
+
+local input = ""
+
+print("")
+input = read()
+
+if input == "y" then
+
+  for n = 1, 9 do
+      farmRow()
+  end
+else
+  print("Exiting Program...")
+  read()
+end
