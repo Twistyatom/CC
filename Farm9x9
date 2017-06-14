@@ -25,7 +25,7 @@ function CheckStart()
     elseif side == "right"
         startSide = "right"
     else
-        break
+        return
     end
     print("Okay, I'm on the "..startSide.." side")
 end
