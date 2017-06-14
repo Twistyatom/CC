@@ -1,32 +1,51 @@
 function farmBlock()
     turtle.forward()
-    turtle.breakDown()
+    turtle.digDown()
     turtle.select(1)
     if turtle.getItemCount(1) > 0 then
       turtle.placeDown()
     else print("Out of Seeds")
+		break
+		--return to start
+	end
 end
 
 function farmRow()
-    for i = 1, 8 do
+    for i = 1,8 do
         farmBlock()
     end
-    turtle.turnRight()
-    turtle.forward()
-    turtle.turnRight()
+    EndRow()
 end
 
-local input = ""
+function CheckStart()
+    print("Am I on the left or right side of the farm? ")
+    local side = read()
+    if side == "left" then
+        startSide = "left"
+    elseif side == "right"
+        startSide = "right"
+    else
+        break
+    end
+    print("Okay, I'm on the "..startSide.." side")
+end
 
-print("")
-input = read()
+function EndRow()
+    if startSide == "left"
+        turtle.turnRight()
+        turtle.forward()
+        turtle.turnRight()
+    else
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.turnLeft()
+    end
+end
 
-if input == "y" then
+local startSide = ""
 
-  for n = 1, 9 do
-      farmRow()
-  end
-else
-  print("Exiting Program...")
-  read()
+CheckStart()
+
+for n = 1,9 do
+  farmRow()
 end
